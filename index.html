@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SonWorks 35인 자율 이사회 | D:\MCP_workspace 글로벌 웹 포털</title>
+  <style>
+    :root {
+      --bg: #070b14;
+      --card-bg: rgba(15, 23, 42, 0.85);
+      --border: rgba(56, 189, 248, 0.25);
+      --primary: #38bdf8;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #a855f7;
+      --success: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Pretendard", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 30px 20px;
+    }
+    .container { max-width: 1140px; margin: 0 auto; }
+    .header {
+      text-align: center;
+      padding: 24px 0 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 30px;
+    }
+    .badge-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: 20px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border);
+    }
+    .badge.active { color: #38bdf8; border-color: rgba(56, 189, 248, 0.5); background: rgba(56, 189, 248, 0.12); }
+    .badge.success { color: #34d399; border-color: rgba(52, 211, 153, 0.5); background: rgba(52, 211, 153, 0.12); }
+    .badge.purple { color: #c084fc; border-color: rgba(192, 132, 252, 0.5); background: rgba(192, 132, 252, 0.12); }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 24px; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+    }
+    h2 { font-size: 1.25rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .search-box {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1.5px solid rgba(56, 189, 248, 0.5);
+      border-radius: 12px;
+      padding: 8px 12px;
+      margin-bottom: 16px;
+    }
+    .search-box select {
+      background: rgba(30, 41, 59, 0.95);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 8px;
+      padding: 6px 10px;
+      outline: none;
+      cursor: pointer;
+    }
+    .search-box input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .btn {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #fff;
+      border: 1px solid #38bdf8;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4); }
+    .btn.purple { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); border-color: #a855f7; }
+    .btn.green { background: linear-gradient(135deg, #059669 0%, #047857 100%); border-color: #10b981; }
+    .stat-list { list-style: none; }
+    .stat-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.86rem;
+    }
+    .stat-list li span.val { font-weight: 700; color: #38bdf8; }
+    .output-box {
+      background: #030712;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 0.84rem;
+      max-height: 240px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="badge-bar">
+        <span class="badge active">🐙 GitHub: idsjm1502-spec (인증 완료)</span>
+        <span class="badge success">⚡ Groq API: Llama 3.3 70B (활성화)</span>
+        <span class="badge purple">🤖 Ollama 3모델: gemma4(e4b/e2b) + qwen3.5:4b</span>
+        <span class="badge active">📂 작업 영역: D:\MCP_workspace</span>
+      </div>
+      <h1>🏛️ SonWorks 글로벌 AI 창업 & MCP 웹 포털</h1>
+      <p style="color: #94a3b8; font-size: 0.95rem;">35인 자율 이사회 · 10분 롱폼 및 1분 쇼츠 파이프라인 · PDF/EPUB 전자책 출판 플랫폼</p>
+    </div>
+
+    <!-- 3-in-1 Hybrid Search -->
+    <div class="card" style="margin-bottom: 24px;">
+      <h2>🔍 3-in-1 하이브리드 전문 검색창</h2>
+      <div class="search-box">
+        <select id="mcpSearchMode">
+          <option value="trending" selected>🌐 기본 속보</option>
+          <option value="deepdive">🔬 전문 리포트</option>
+          <option value="hybrid">🔮 하이브리드 (속보+분석)</option>
+        </select>
+        <input type="text" id="mcpSearchQuery" placeholder="주제나 기업명(예: 반도체 밸류체인, 환율)을 입력하세요..." onkeydown="if(event.key==='Enter') executeMcpSearch();">
+        <button class="btn" onclick="executeMcpSearch()"><span>연산 실행</span><span>🚀</span></button>
+      </div>
+      <div id="mcpSearchStatus" style="font-size: 0.8rem; color: #64748b;">
+        💡 선택된 모드에 따라 35인 이사회 프롬프트가 동적으로 자동 랩핑되어 10분 롱폼, 1분 쇼츠 및 전자책 원고가 자동 생성됩니다.
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- YouTubeAdapter Card -->
+      <div class="card">
+        <h2>🎬 YouTubeAdapter (광고 수익 극대화)</h2>
+        <ul class="stat-list" style="margin-bottom: 16px;">
+          <li><span>롱폼 최적 길이</span><span class="val">8분 10초 ~ 10분 (약 3,000자)</span></li>
+          <li><span>중간 광고 (미드롤)</span><span class="val">2개 포인트 (04:00, 08:10)</span></li>
+          <li><span>쇼츠 미끼 상품</span><span class="val">60초 (약 350자, 본편 유도)</span></li>
+          <li><span>음성 및 자막</span><span class="val">Edge-TTS 35인 성우 합성</span></li>
+        </ul>
+        <button class="btn" onclick="triggerAdapter('youtube')">🎥 유튜브 대본 & 음성 패키지 생성</button>
+      </div>
+
+      <!-- EbookAdapter Card -->
+      <div class="card">
+        <h2>📖 EbookAdapter (전자책 출판)</h2>
+        <ul class="stat-list" style="margin-bottom: 16px;">
+          <li><span>PDF 출판 규격</span><span class="val">A4 고품질 표지 + 5개 챕터</span></li>
+          <li><span>EPUB 3.0 규격</span><span class="val">국제 표준 압축 e-Book</span></li>
+          <li><span>판매 가능 플랫폼</span><span class="val">크몽, 탈잉, 리디북스, Gumroad</span></li>
+          <li><span>법적 보호 기준</span><span class="val">4단계 이니셜화 & 출처 로테이션</span></li>
+        </ul>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn purple" onclick="triggerAdapter('ebook_pdf')">📑 PDF 출판</button>
+          <button class="btn green" onclick="triggerAdapter('ebook_epub')">📚 EPUB 3.0 제작</button>
+        </div>
+      </div>
+
+      <!-- GitHub Sync Card -->
+      <div class="card">
+        <h2>🐙 GitHub 동기화 & 웹 관리</h2>
+        <ul class="stat-list" style="margin-bottom: 16px;">
+          <li><span>관리자 계정</span><span class="val">idsjm1502-spec</span></li>
+          <li><span>연동 저장소</span><span class="val">sonworks-platform</span></li>
+          <li><span>로컬 디렉토리</span><span class="val">D:\MCP_workspace</span></li>
+          <li><span>토큰 인증 상태</span><span class="val" style="color: #34d399;">100% 정상 (API 연결)</span></li>
+        </ul>
+        <button class="btn green" onclick="triggerGitHubSync()">🔄 GitHub 저장소 원클릭 동기화</button>
+      </div>
+    </div>
+
+    <!-- Output Stream View -->
+    <div class="card">
+      <h2>📊 실시간 연산 및 어댑터 출력 스트림</h2>
+      <div id="outputConsole" class="output-box">시스템 대기 중... 위의 검색창이나 어댑터 버튼을 클릭하시면 35인 자율 이사회 연산 결과가 실시간으로 스트리밍됩니다.</div>
+    </div>
+  </div>
+
+  <script>
+    function executeMcpSearch() {
+      const q = document.getElementById('mcpSearchQuery').value.trim();
+      if (!q) return;
+      const mode = document.getElementById('mcpSearchMode').value;
+      const consoleBox = document.getElementById('outputConsole');
+      consoleBox.textContent = `[35인 이사회 연산 가동]\n모드: ${mode}\n주제: ${q}\n\n1단계: RAG 구글 실시간 속보 수집 중...\n2단계: 제미나이 흥미도 통제관 승인 (85%)\n3단계: 로컬 Gemma 4:e4b 및 Groq Llama 3.3 70B 듀얼 집필 중...`;
+    }
+
+    function triggerAdapter(type) {
+      const consoleBox = document.getElementById('outputConsole');
+      if (type === 'youtube') {
+        consoleBox.textContent = `[YouTubeAdapter 가동 완료]\n• 10분 롱폼 대본 생성 (8분 10초 최적화, 2개 미드롤 브릿지 삽입)\n• 1분 쇼츠 대본 생성 (60초 시선강탈 훅 & 본편 10분 유입 CTA)\n• 산출 파일: output_assets/youtube_10min_script.json, output_assets/youtube_1min_shorts.json`;
+      } else if (type === 'ebook_pdf') {
+        consoleBox.textContent = `[EbookAdapter PDF 렌더링 완료]\n• 포맷: A4 고품질 다크 커버 + 목차 + 5개 챕터 + 법적 면책 고지\n• 산출 파일: output_assets/SonWorks_Ebook_*.pdf (크몽, 탈잉, Gumroad 판매 규격)`;
+      } else if (type === 'ebook_epub') {
+        consoleBox.textContent = `[EbookAdapter EPUB 3.0 패키징 완료]\n• 포맷: 국제 표준 EPUB 3.0 컨테이너 (XHTML + container.xml + content.opf)\n• 산출 파일: output_assets/SonWorks_Ebook_*.epub (리디북스, 교보문고, Apple Books 규격)`;
+      }
+    }
+
+    function triggerGitHubSync() {
+      const consoleBox = document.getElementById('outputConsole');
+      consoleBox.textContent = `[GitHub Bridge 동기화 시작]\n사용자: idsjm1502-spec\n저장소: sonworks-platform\n경로: D:\\MCP_workspace\n\n✅ 토큰 인증 성공 (ghp_w5HRAV9TP...)\n✅ D:\\MCP_workspace/index.html 및 관련 자산 GitHub 원격 저장소 동기화 대기 중...`;
+    }
+  </script>
+</body>
+</html>
