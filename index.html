@@ -197,6 +197,18 @@
         </div>
       </div>
 
+      <!-- SNSViralAdapter Card -->
+      <div class="card">
+        <h2>📱 SNSViralAdapter (바이럴 홍보부)</h2>
+        <ul class="stat-list" style="margin-bottom: 16px;">
+          <li><span>인스타 릴스</span><span class="val">3초 시선강탈 훅 + 30~60초 대본</span></li>
+          <li><span>5단 카드뉴스</span><span class="val">페이스북·인스타 슬라이드 1~5</span></li>
+          <li><span>틱톡 숏폼</span><span class="val">15초 초고속 호흡 스크립트</span></li>
+          <li><span>해시태그 풀</span><span class="val">도달률 극대화 6대 태그 풀</span></li>
+        </ul>
+        <button class="btn purple" onclick="triggerAdapter('sns_viral')">📱 SNS 바이럴 패키지 생성</button>
+      </div>
+
       <!-- GitHub Sync Card -->
       <div class="card">
         <h2>🐙 GitHub 동기화 & 웹 관리</h2>
@@ -206,7 +218,10 @@
           <li><span>로컬 디렉토리</span><span class="val">D:\MCP_workspace</span></li>
           <li><span>토큰 인증 상태</span><span class="val" style="color: #34d399;">100% 정상 (API 연결)</span></li>
         </ul>
-        <button class="btn green" onclick="triggerGitHubSync()">🔄 GitHub 저장소 원클릭 동기화</button>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn green" onclick="triggerGitHubSync()">🔄 GitHub 저장소 원클릭 동기화</button>
+          <a href="tech_spec.html" class="btn" target="_blank" style="text-decoration:none;">📖 시스템 기술서 ↗</a>
+        </div>
       </div>
     </div>
 
@@ -234,6 +249,8 @@
         consoleBox.textContent = `[EbookAdapter PDF 렌더링 완료]\n• 포맷: A4 고품질 다크 커버 + 목차 + 5개 챕터 + 법적 면책 고지\n• 산출 파일: output_assets/SonWorks_Ebook_*.pdf (크몽, 탈잉, Gumroad 판매 규격)`;
       } else if (type === 'ebook_epub') {
         consoleBox.textContent = `[EbookAdapter EPUB 3.0 패키징 완료]\n• 포맷: 국제 표준 EPUB 3.0 컨테이너 (XHTML + container.xml + content.opf)\n• 산출 파일: output_assets/SonWorks_Ebook_*.epub (리디북스, 교보문고, Apple Books 규격)`;
+      } else if (type === 'sns_viral') {
+        consoleBox.textContent = `[SNSViralAdapter 바이럴 패키지 가동]\n• 인스타그램 릴스 (3초 훅 + 30~60초 대본 + 추천 BGM)\n• 페이스북/인스타 5단 카드뉴스 (슬라이드 1~5)\n• 틱톡 15초 초고속 숏폼 + 추천 해시태그 6종 풀\n• 산출 파일: output_assets/sns_viral_marketing_package.json`;
       }
     }
 
